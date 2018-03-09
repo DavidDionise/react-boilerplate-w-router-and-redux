@@ -1,0 +1,36 @@
+.homepage-container {
+  min-height: 0px;
+
+  .homepage-background-image-container {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+
+    img {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      min-height: 0px;
+      z-index: 2;
+    }
+  }
+
+  .homepage-background-image-text {
+    z-index: 3;
+    position: absolute;
+    color: white;
+    margin-top: 200px;
+  }
+
+  // Small screen rules
+  @media screen and (max-width: 1300px) {
+    .homepage-background-image-container {
+      img {
+        width: 1300px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

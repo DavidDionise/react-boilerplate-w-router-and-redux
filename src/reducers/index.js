@@ -1,5 +1,7 @@
-import textValues from './textValues';
+import textFields from './textFields';
+import user from './user';
 
 export {
-  textValues
+  textFields,
+  user
 };

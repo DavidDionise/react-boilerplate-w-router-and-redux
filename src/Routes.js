@@ -4,13 +4,17 @@ import {
   Route,
   browserHistory
 } from 'react-router';
-import { App } from 'components';
+import {
+  App,
+  SignInContainer
+} from 'components';
 
 class Routes extends React.Component {
   render() {
     return (
       <Router history={browserHistory}>
         <Route path='/' component={App} />
+        <Route path='/admin' component={SignInContainer} />
       </Router>
     );
   }

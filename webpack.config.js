@@ -19,14 +19,15 @@ module.exports = {
   devServer: {
     hot: true,
     contentBase: resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
+    historyApiFallback: true
   },
 
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        use: [ 'babel-loader', ],
+        use: [ 'babel-loader' ],
         exclude: /node_modules/
       },
       {
@@ -43,5 +44,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-  ],
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify('development'),
+      API_URL: JSON.stringify('http://localhost:3000')
+    })
+  ]
 };

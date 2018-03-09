@@ -1,6 +1,21 @@
+html, body, #root, .app-container, .six-sigma-app-container {
+  height: 100%;
+  width: 100%;
+}
+
 .app-container {
   text-size-adjust: none;
   font-family: helvetica, arial, sans-serif;
   line-height: 200%;
-  padding: 6px 20px 30px;
+}
+
+.app-loading-page-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.field-one-class {
+  margin: 50px;
 }
