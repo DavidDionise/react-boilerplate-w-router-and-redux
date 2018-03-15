@@ -13,7 +13,7 @@ const HeaderButton = props => {
       onMouseOver={() => $(`.${className}`).addClass('hovered')}
       onMouseLeave={() => $(`.${className}`).removeClass('hovered')}
       >
-      <h4>{text}</h4>
+      <h3>{text}</h3>
     </div>
   );
 }

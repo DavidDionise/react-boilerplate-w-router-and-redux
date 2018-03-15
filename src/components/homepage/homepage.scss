@@ -1,11 +1,14 @@
+@import 'variables';
+
 .homepage-container {
   min-height: 0px;
 
   .homepage-background-image-container {
     height: 100%;
-    width: 100%;
+    width: 100vw;
     z-index: 1;
     position: absolute;
+    margin-left: -$lg-container-margin-width;
 
     img {
       position: absolute;
@@ -20,17 +23,61 @@
     z-index: 3;
     position: absolute;
     color: white;
-    margin-top: 200px;
+    font-family: $primary-font-family;
+    font-size: 40px;
+    margin: 125px #{$lg-container-margin-width / 2} 0 $lg-container-margin-width;
+    line-height: 44px;
   }
+}
 
-  // Small screen rules
-  @media screen and (max-width: 1300px) {
+@media screen and (max-width: $md-screen-break) {
+  .homepage-container {
     .homepage-background-image-container {
+      margin-left: -$md-container-margin-width;
+
       img {
-        width: 1300px;
-        margin-left: 50%;
-        transform: translateX(-50%);
+        width: $md-screen-break;
+        margin-left: calc(50% - #{$md-container-margin-width});
+        transform: translateX(calc(-50% + #{$md-container-margin-width}));
       }
+    }
+
+    .homepage-background-image-text {
+      margin-left: $md-container-margin-width;
+    }
+  }
+}
+
+@media screen and (max-width: $sm-screen-break) {
+  .homepage-container {
+    .homepage-background-image-container {
+      margin-left: -$sm-container-margin-width;
+
+      img {
+        margin-left: calc(50% - #{$sm-container-margin-width});
+        transform: translateX(calc(-50% + #{$sm-container-margin-width}));
+      }
+    }
+
+    .homepage-background-image-text {
+      margin-left: $sm-container-margin-width;
+    }
+  }
+}
+
+  @media screen and (max-width: $xs-screen-break) {
+  .homepage-container {
+    .homepage-background-image-container {
+      margin-left: -$xs-container-margin-width;
+
+      img {
+        margin-left: calc(50% - #{$xs-container-margin-width});
+        transform: translateX(calc(-50% + #{$xs-container-margin-width}));
+      }
+    }
+
+    .homepage-background-image-text {
+      margin-left: $xs-container-margin-width;
     }
   }
 }

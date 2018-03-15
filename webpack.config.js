@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/'
   },
 
@@ -18,7 +18,7 @@ module.exports = {
 
   devServer: {
     hot: true,
-    contentBase: resolve(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'dist'),
     publicPath: '/',
     historyApiFallback: true
   },
@@ -36,7 +36,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [ path.join(__dirname, 'src', 'stylesheets') ]
+            }
+          }
+        ]
       }
     ],
   },
