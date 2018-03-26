@@ -11,7 +11,10 @@
       "alias": {
         "constants": "./constants",
         "components": "./components",
-        "actions": "./actions"
+        "actions": "./actions",
+        "api": "./api",
+        "store": "./src/reducers/store.js",
+        "main": "./index.js"
       }
     }]
   ]

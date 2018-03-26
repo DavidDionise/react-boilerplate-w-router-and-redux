@@ -1,17 +1,17 @@
 @import 'variables';
 
 .homepage-container {
+  display: flex;
+  flex-direction: column;
   min-height: 0px;
 
   .homepage-background-image-container {
     height: 100%;
     width: 100vw;
-    z-index: 1;
-    position: absolute;
     margin-left: -$lg-container-margin-width;
 
     img {
-      position: absolute;
+      position: relative;
       top: 0px;
       width: 100%;
       min-height: 0px;

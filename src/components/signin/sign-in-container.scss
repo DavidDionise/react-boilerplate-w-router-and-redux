@@ -1,0 +1,23 @@
+@import 'variables';
+
+.signin-form-container {
+  padding: 200px $lg-container-margin-width 0 $lg-container-margin-width;
+}
+
+@media screen and (max-width: $md-screen-break) {
+  .signin-form-container {
+    padding: 200px $md-container-margin-width 0 $md-container-margin-width;
+  }
+}
+
+@media screen and (max-width: $sm-screen-break) {
+  .signin-form-container {
+    padding: 200px $sm-container-margin-width 0 $sm-container-margin-width;
+  }
+}
+
+@media screen and (max-width: $xs-screen-break) {
+  .signin-form-container {
+    padding: 200px $xs-container-margin-width 0 $xs-container-margin-width;
+  }
+}

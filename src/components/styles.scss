@@ -1,6 +1,10 @@
+@import 'variables';
+
 html, body, #root, .app-container, .six-sigma-app-container {
   height: 100%;
   width: 100%;
+  font-family: $primary-font-family;
+  background-color: #F7F7F7;
 }
 
 .app-container {
@@ -17,4 +21,22 @@ html, body, #root, .app-container, .six-sigma-app-container {
 
 .field-one-class {
   margin: 50px;
+}
+
+.logout-button {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  height: 30px;
+  width: 150px;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px 0 0 0;
+  color: white;
+}
+
+.logout-button:hover {
+  cursor: pointer;
 }

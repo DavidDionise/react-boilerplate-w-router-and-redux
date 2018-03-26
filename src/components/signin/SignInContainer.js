@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { requestSignInUser } from 'api';
+import { toggleUserLoggedIn } from 'actions';
 import { Panel, FormControl, Button, Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 
@@ -10,19 +12,23 @@ class SignInContainer extends Component {
     this.state = {
       email: '',
       password: '',
-      loading: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
-    this.setState({ loading: true });
     const { email, password } = this.state;
     requestSignInUser({ email, password })
-    .then(res => browserHistory.push('/'))
+    .then(({ updated_token }) => {
+      this.props.toggleUserLoggedIn(true, updated_token);
+      browserHistory.push('/');
+    })
     .catch(e => {
       console.log(e);
+      if(e.name = 'ValidationError') {
+        $.notify('Invalid Login', 'error');
+      }
     });
   }
 
@@ -36,11 +42,13 @@ class SignInContainer extends Component {
               value={this.state.email}
               placeholder='Enter Email'
               onChange={e => this.setState({ email: e.target.value })}
+              className='mb-sm'
             />
             <FormControl
               value={this.state.password}
               placeholder='Enter Password'
               onChange={e => this.setState({ password: e.target.value })}
+              className='mb-sm'
             />
             <Row>
               <Col md={12} xs={12}>
@@ -60,4 +68,4 @@ class SignInContainer extends Component {
   }
 }
 
-export default SignInContainer;
+export default connect(null, { toggleUserLoggedIn })(SignInContainer);

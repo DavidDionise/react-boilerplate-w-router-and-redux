@@ -2,7 +2,7 @@ import * as ActionTypes from 'constants';
 
 const user = (
   state = {
-    logged_in: true,
+    logged_in: false,
     token: ''
   },
   { type, payload }

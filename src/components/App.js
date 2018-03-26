@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { initFields, updateToken } from 'actions';
+import { initFields, updateToken, toggleUserLoggedIn } from 'actions';
 import { requestFetchFields } from 'api';
 import { HomePageContainer, UpdateFieldModal, Spinner } from 'components';
 import './styles.scss';
@@ -13,18 +13,31 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: true };
+
+    this.handleClickLogout = this.handleClickLogout.bind(this);
+  }
+
+  handleClickLogout() {
+    if(localStorage) {
+      localStorage.setItem('token', '');
+    }
+
+    this.props.toggleUserLoggedIn(false);
+  }
+  fetchFields() {
+    requestFetchFields()
+    .then(res => {
+      this.props.initFields(res.results)})
+    .catch(console.log)
+    .finally(() => {
+      this.setState({ loading: false })
+    });
   }
   componentWillMount() {
     if(localStorage) {
       this.props.updateToken(localStorage.getItem('token'));
     }
     this.fetchFields();
-  }
-  fetchFields() {
-    requestFetchFields()
-    .then(res => this.props.initFields(res.results))
-    .catch(console.log)
-    .finally(() => this.setState({ loading: false }));
   }
 
   render() {
@@ -39,6 +52,14 @@ class App extends React.Component {
           <div>
             <HomePageContainer />
             <UpdateFieldModal />
+            {this.props.user.logged_in ? (
+              <div
+                className='logout-button'
+                onClick={this.handleClickLogout}
+                >
+                Log Out
+              </div>
+            ) : null}
           </div>
         )}
       </div>
@@ -46,6 +67,6 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ textFields }) => ({ textFields });
+const mapStateToProps = ({ textFields, user }) => ({ textFields, user });
 
-export default connect(mapStateToProps, { initFields, updateToken })(App);
+export default connect(mapStateToProps, { initFields, updateToken, toggleUserLoggedIn })(App);

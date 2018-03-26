@@ -31,10 +31,12 @@ const callApi = (
       });
     }
     else {
-      throw new Error(res);
+      return res.json()
+      .then(data => {
+        return Promise.reject(data);
+      });
     }
   })
-  .catch(console.log);
 }
 
 export default callApi;
