@@ -2,19 +2,15 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.js',
-  ],
+  entry: './src/index.js',
+  mode: 'development',
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, 'dist'),
     publicPath: '/'
   },
 
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
 
   devServer: {
     hot: true,

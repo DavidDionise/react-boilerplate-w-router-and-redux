@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateHomepageBody } from 'actions';
+import { hot } from 'react-hot-loader';
 
 import './styles.scss';
 
@@ -23,4 +24,4 @@ class App extends React.Component {
 
 const mapStateToProps = ({ textValues }) => ({ textValues });
 
-export default connect(mapStateToProps, { updateHomepageBody })(App);
+export default hot(module)(connect(mapStateToProps, { updateHomepageBody })(App));
